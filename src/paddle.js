@@ -11,13 +11,24 @@ export default class Paddle {
         };
     }
 
+    moveLeft() {
+        this.speed = -this.maxSpeed;
+    }
+
+    moveRight() {
+        this.speed = this.maxSpeed;
+    }
+
+    stop() {
+        this.speed = 0;
+    }
+
     draw(ctx) {
         ctx.fillStyle = '#568EA3';
         ctx.fillRect(this.position.x, this.position.y, this.width, this.height);
     }
 
-    update(deltaTime) {
-        if (!deltaTime) return;
+    update() {
         this.position.x += this.speed;
 
         if (this.position.x < 0) {
@@ -26,13 +37,5 @@ export default class Paddle {
         if (this.position.x + this.width > this.gameWidth) {
             this.position.x = this.gameWidth - this.width;
         }
-    }
-
-    moveLeft() {
-        this.speed = -this.maxSpeed;
-    }
-
-    moveRight() {
-        this.speed = this.maxSpeed;
     }
 }
