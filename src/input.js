@@ -10,6 +10,12 @@ export default class InputHandler {
                 case 'ArrowRight':
                     paddle.moveRight();
                     break;
+                case 'p':
+                    game.togglePause();
+                    break;
+                case ' ':
+                    game.start();
+                    break;
             }
         });
         document.addEventListener('keyup', event => {
@@ -23,9 +29,6 @@ export default class InputHandler {
                     if (paddle.speed > 0) {
                         paddle.stop();
                     }
-                    break;
-                case ' ':
-                    game.togglePause();
                     break;
             }
         });
