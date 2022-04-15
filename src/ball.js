@@ -4,8 +4,8 @@ export default class Ball {
     constructor(game) {
         this.image = document.getElementById('img_ball');
         this.speed = {
-            x: 4,
-            y: 4,
+            x: 6,
+            y: -6,
         };
         this.position = { x: 10, y: 300 };
         this.size = 16;
