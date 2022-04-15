@@ -41,12 +41,19 @@ export default class Ball {
         }
 
         // Does ball hit the paddle?
+        let bottomOfBall = this.position.y + this.size;
+        let topOfPaddle = this.game.paddle.position.y;
+        let leftSideOfPaddle = this.game.paddle.position.x;
+        let rightSideOfPaddle =
+            this.game.paddle.position.x + this.game.paddle.width;
+
         if (
-            this.position.y + this.game.paddle.height ===
-                this.game.paddle.position.y &&
-            this.position.x === this.game.paddle.position.x
+            bottomOfBall >= topOfPaddle &&
+            this.position.x >= leftSideOfPaddle &&
+            this.position.x <= rightSideOfPaddle
         ) {
             this.speed.y = -this.speed.y;
+            this.position.y = this.game.paddle.position.y - this.size;
         }
     }
 }
