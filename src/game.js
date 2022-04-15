@@ -1,7 +1,7 @@
-import Paddle from '/src/paddle.js';
-import InputHandler from '/src/input.js';
-import Ball from '/src/ball.js';
-import { buildLevel, level1, level2, level3 } from '/src/levels.js';
+import Paddle from '../src/paddle.js';
+import InputHandler from '../src/input.js';
+import Ball from '../src/ball.js';
+import { buildLevel, level1, level2, level3 } from '../src/levels.js';
 
 const GAMESTATE = {
     PAUSED: 0,
@@ -63,11 +63,15 @@ export default class Game {
             object.draw(ctx)
         );
 
-        // Lives counter
+        // Lives and Level counter
         ctx.font = '20px Arial';
         ctx.fillStyle = 'black';
         ctx.textAlign = 'top';
-        ctx.fillText(`Lives: ${this.lives}`, this.gameWidth / 2, 20);
+        ctx.fillText(
+            `Lives: ${this.lives}   Level: ${this.currentLevel + 1}`,
+            this.gameWidth / 2,
+            20
+        );
 
         if (this.gamestate === GAMESTATE.PAUSED) {
             ctx.rect(0, 0, this.gameWidth, this.gameHeight);
