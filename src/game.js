@@ -1,7 +1,7 @@
 import Paddle from '/src/paddle.js';
 import InputHandler from '/src/input.js';
 import Ball from '/src/ball.js';
-import { buildLevel, level1, level2 } from '/src/levels.js';
+import { buildLevel, level1, level2, level3 } from '/src/levels.js';
 
 const GAMESTATE = {
     PAUSED: 0,
@@ -21,7 +21,7 @@ export default class Game {
         this.lives = 3;
         this.gameObjects = [];
         this.bricks = [];
-        this.levels = [level1, level2];
+        this.levels = [level1, level2, level3];
         this.currentLevel = 0;
         new InputHandler(this.paddle, this);
     }
@@ -62,6 +62,13 @@ export default class Game {
         [...this.gameObjects, ...this.bricks].forEach(object =>
             object.draw(ctx)
         );
+
+        // Lives counter
+        ctx.font = '20px Arial';
+        ctx.fillStyle = 'black';
+        ctx.textAlign = 'top';
+        ctx.fillText(`Lives: ${this.lives}`, this.gameWidth / 2, 20);
+
         if (this.gamestate === GAMESTATE.PAUSED) {
             ctx.rect(0, 0, this.gameWidth, this.gameHeight);
             ctx.fillStyle = 'rgba(0,0,0,0.5)';
