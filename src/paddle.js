@@ -3,6 +3,7 @@ export default class Paddle {
         this.gameWidth = game.gameWidth;
         this.width = 150;
         this.height = 20;
+        this.image = document.getElementById('img_paddle');
         this.maxSpeed = 7;
         this.speed = 0;
         this.position = {
@@ -24,8 +25,13 @@ export default class Paddle {
     }
 
     draw(ctx) {
-        ctx.fillStyle = '#568EA3';
-        ctx.fillRect(this.position.x, this.position.y, this.width, this.height);
+        ctx.drawImage(
+            this.image,
+            this.position.x,
+            this.position.y,
+            this.width,
+            this.height
+        );
     }
 
     update(deltaTime) {

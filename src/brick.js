@@ -13,7 +13,15 @@ export default class Brick {
     }
     update(deltaTime) {
         if (detectCollision(this.game.ball, this)) {
-            this.game.ball.speed.y = -this.game.ball.speed.y;
+            if (
+                this.game.ball.position.x + this.game.ball.size >=
+                    this.position.x ||
+                this.game.ball.position.x <= this.position.x + this.width
+            ) {
+                this.game.ball.speed.x = -this.game.ball.speed.x;
+            } else {
+                this.game.ball.speed.y = -this.game.ball.speed.y;
+            }
             this.markedForDeletion = true;
         }
     }
